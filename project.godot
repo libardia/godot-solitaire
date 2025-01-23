@@ -17,7 +17,6 @@ config/features=PackedStringArray("4.3", "GL Compatibility")
 [autoload]
 
 DebugQuit="*res://globals/debug_quit.gd"
-ClickPoint="*res://globals/click_point.tscn"
 
 [display]
 

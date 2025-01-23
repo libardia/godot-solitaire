@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dexr6ock8yfyv"]
 
-[ext_resource type="Script" path="res://globals/click_point.gd" id="1_mc6e4"]
+[ext_resource type="Script" path="res://objects/click_point.gd" id="1_mc6e4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0ckl8"]
 radius = 0.5
