@@ -14,18 +14,15 @@ func _unhandled_input(event: InputEvent):
     if event.is_action_pressed(&"card-interact"):
         var areas := get_overlapping_areas()
         if areas.is_empty():
-            print("clicked on nothing")
             interact_empty.emit()
         else:
             var interacted_object: Node2D = get_latest_in_tree(areas).get_parent()
-            print("clicked on ", interacted_object)
             interact_object.emit(interacted_object)
             get_viewport().set_input_as_handled()
     elif event.is_action_pressed(&"card-auto"):
         var areas := get_overlapping_areas()
         if not areas.is_empty():
             var interacted_object: Node2D = get_latest_in_tree(areas).get_parent()
-            print("request move ", interacted_object)
             auto_move.emit(interacted_object)
             get_viewport().set_input_as_handled()
 
