@@ -14,3 +14,7 @@ script = ExtResource("2_as5mu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickPoint"]
 shape = SubResource("CircleShape2D_84q7u")
+
+[connection signal="auto_move" from="ClickPoint" to="." method="on_auto_move"]
+[connection signal="interact_empty" from="ClickPoint" to="." method="on_interact_empty"]
+[connection signal="interact_object" from="ClickPoint" to="." method="on_interact"]
