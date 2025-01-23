@@ -1,14 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://caj8gtnxxvqp2"]
 
 [ext_resource type="PackedScene" uid="uid://cfc4qqmu1h11e" path="res://controller.tscn" id="1_bl1fi"]
-[ext_resource type="PackedScene" uid="uid://bddrhp5bufq6m" path="res://objects/card.tscn" id="1_xmcuu"]
+[ext_resource type="PackedScene" uid="uid://bddrhp5bufq6m" path="res://objects/card.tscn" id="2_xk7kc"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Controller" parent="." instance=ExtResource("1_bl1fi")]
 
-[node name="Card" parent="." instance=ExtResource("1_xmcuu")]
-position = Vector2(369, 318)
+[node name="Card" parent="." instance=ExtResource("2_xk7kc")]
+position = Vector2(139, 150)
+initial_value = &"4C"
 
-[node name="Card2" parent="." instance=ExtResource("1_xmcuu")]
-position = Vector2(441, 409)
+[node name="Card2" parent="." instance=ExtResource("2_xk7kc")]
+position = Vector2(224, 230)
+initial_value = &"KH"

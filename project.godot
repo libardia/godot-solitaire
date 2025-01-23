@@ -17,6 +17,10 @@ config/features=PackedStringArray("4.3", "GL Compatibility")
 [autoload]
 
 DebugQuit="*res://globals/debug_quit.gd"
+Ranks="*res://globals/ranks.gd"
+Suits="*res://globals/suits.gd"
+CardValues="*res://globals/card_values.gd"
+CardGraphics="*res://globals/card_graphics.gd"
 
 [display]
 

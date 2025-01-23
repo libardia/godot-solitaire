@@ -10,6 +10,7 @@ radius = 0.5
 script = ExtResource("1_k24ve")
 
 [node name="ClickPoint" type="Area2D" parent="."]
+monitorable = false
 script = ExtResource("2_as5mu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickPoint"]
