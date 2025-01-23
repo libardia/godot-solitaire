@@ -1,18 +1,20 @@
-extends Area2D
+extends Node2D
 
 
 signal interact_empty
 signal interact_object(clicked: Node2D)
 signal auto_move(clicked: Node2D)
 
+@onready var click_point_area: Area2D = $ClickPointArea
 
-func _physics_process(_delta):
-    position = get_viewport().get_mouse_position()
+
+func _process(_delta):
+    global_position = get_viewport().get_mouse_position()
 
 
 func _unhandled_input(event: InputEvent):
     if event.is_action_pressed(&"card-interact"):
-        var areas := get_overlapping_areas()
+        var areas := click_point_area.get_overlapping_areas()
         if areas.is_empty():
             interact_empty.emit()
         else:
@@ -20,7 +22,7 @@ func _unhandled_input(event: InputEvent):
             interact_object.emit(interacted_object)
             get_viewport().set_input_as_handled()
     elif event.is_action_pressed(&"card-auto"):
-        var areas := get_overlapping_areas()
+        var areas := click_point_area.get_overlapping_areas()
         if not areas.is_empty():
             var interacted_object: Node2D = get_latest_in_tree(areas).get_parent()
             auto_move.emit(interacted_object)

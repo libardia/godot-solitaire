@@ -1,16 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://caj8gtnxxvqp2"]
+[gd_scene load_steps=7 format=3 uid="uid://caj8gtnxxvqp2"]
 
 [ext_resource type="PackedScene" uid="uid://cfc4qqmu1h11e" path="res://controller.tscn" id="1_bl1fi"]
+[ext_resource type="PackedScene" uid="uid://shcwwt8xedeg" path="res://objects/deck.tscn" id="2_65c1w"]
 [ext_resource type="PackedScene" uid="uid://bddrhp5bufq6m" path="res://objects/card.tscn" id="2_xk7kc"]
+[ext_resource type="Script" path="res://holding.gd" id="4_b45r8"]
+[ext_resource type="Texture2D" uid="uid://y67xi5shyp6v" path="res://img/cards/cardSpadesA.png" id="5_k0b01"]
+[ext_resource type="Script" path="res://delete_self.gd" id="5_qiol0"]
 
 [node name="Main" type="Node2D"]
 
 [node name="Controller" parent="." instance=ExtResource("1_bl1fi")]
 
-[node name="Card" parent="." instance=ExtResource("2_xk7kc")]
-position = Vector2(139, 150)
-initial_value = &"4C"
+[node name="Deck" parent="." instance=ExtResource("2_65c1w")]
+position = Vector2(141, 207)
 
-[node name="Card2" parent="." instance=ExtResource("2_xk7kc")]
-position = Vector2(224, 230)
-initial_value = &"KH"
+[node name="Card" parent="." instance=ExtResource("2_xk7kc")]
+position = Vector2(386, 242)
+
+[node name="Holding" type="Node2D" parent="."]
+script = ExtResource("4_b45r8")
+
+[node name="GrabPoint" type="Node2D" parent="Holding"]
+position = Vector2(0, 65)
+
+[node name="HoldPreview" type="Sprite2D" parent="Holding/GrabPoint"]
+texture = ExtResource("5_k0b01")
+script = ExtResource("5_qiol0")

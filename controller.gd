@@ -1,14 +1,18 @@
 extends Node
 
 
+@onready var holding: Holding = $"../Holding"
+
+
 func on_interact_empty():
-    pass
+    holding.drop()
 
 
 func on_interact(clicked: Node2D):
+    print("clicked ", clicked)
     if clicked is Card:
         var card := clicked as Card
-        card.set_face_up(not card.face_up)
+        holding.pick_up([card])
 
 
 func on_auto_move(clicked: Node2D):

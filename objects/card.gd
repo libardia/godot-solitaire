@@ -24,8 +24,8 @@ var suit: StringName
 
 
 func _ready():
+    set_face_up(initial_face_up, false)
     card_back.texture = CardGraphics.global_card_back
-    face_up = initial_face_up
     clickable = initial_clickable
     value = initial_value
     var rs := CardValues.value_to_rs(value)
