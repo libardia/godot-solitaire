@@ -30,8 +30,9 @@ func _unhandled_input(event: InputEvent):
 
 
 func get_latest_in_tree(areas: Array[Area2D]) -> Area2D:
+    #print("all clicked: ", areas)
     var last_in_tree: Area2D = null
-    for area: Area2D in areas:
+    for area in areas:
         if not last_in_tree:
             last_in_tree = area
         elif area.is_greater_than(last_in_tree):

@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cfc4qqmu1h11e" path="res://controller.tscn" id="1_bl1fi"]
 [ext_resource type="PackedScene" uid="uid://shcwwt8xedeg" path="res://objects/deck.tscn" id="2_65c1w"]
-[ext_resource type="PackedScene" uid="uid://bddrhp5bufq6m" path="res://objects/card.tscn" id="2_xk7kc"]
+[ext_resource type="PackedScene" uid="uid://c6rlmltunmjk0" path="res://objects/pile.tscn" id="3_du1b5"]
 [ext_resource type="Script" path="res://holding.gd" id="4_b45r8"]
 [ext_resource type="Texture2D" uid="uid://y67xi5shyp6v" path="res://img/cards/cardSpadesA.png" id="5_k0b01"]
 [ext_resource type="Script" path="res://delete_self.gd" id="5_qiol0"]
@@ -12,10 +12,13 @@
 [node name="Controller" parent="." instance=ExtResource("1_bl1fi")]
 
 [node name="Deck" parent="." instance=ExtResource("2_65c1w")]
-position = Vector2(141, 207)
+position = Vector2(160, 226)
 
-[node name="Card" parent="." instance=ExtResource("2_xk7kc")]
-position = Vector2(386, 242)
+[node name="Stock" parent="." instance=ExtResource("3_du1b5")]
+position = Vector2(431, 231)
+face_up_offset = Vector2(50, 0)
+face_down_offset = Vector2(50, 0)
+spread = 3
 
 [node name="Holding" type="Node2D" parent="."]
 script = ExtResource("4_b45r8")

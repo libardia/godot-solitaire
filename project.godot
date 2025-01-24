@@ -21,6 +21,7 @@ Ranks="*res://globals/ranks.gd"
 Suits="*res://globals/suits.gd"
 CardValues="*res://globals/card_values.gd"
 CardGraphics="*res://globals/card_graphics.gd"
+TweenUtil="*res://globals/tween_util.gd"
 
 [display]
 
