@@ -63,4 +63,5 @@ func kill_tween(target: Node2D):
 
 
 func reparent_to_root(node: Node):
+    kill_tween(node)
     node.reparent(get_tree().current_scene)

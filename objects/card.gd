@@ -21,7 +21,7 @@ var face_up: bool
 var value: StringName
 var rank: StringName
 var suit: StringName
-var part_of: Node2D
+var part_of: Pile
 
 
 func _ready():

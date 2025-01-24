@@ -17,7 +17,7 @@ func is_empty() -> bool:
     return cards.is_empty()
 
 
-func pick_up(source_pile: Pile, new_cards: Array[Card], animate = true):
+func pick_up(new_cards: Array[Card], animate: bool = true):
     for card in new_cards:
         card.reparent(grab_point)
         card.clickable = false
@@ -25,14 +25,14 @@ func pick_up(source_pile: Pile, new_cards: Array[Card], animate = true):
     spread_cards(animate)
 
 
-func drop(animate = true):
-    for card in cards:
-        TweenUtil.kill_tween(card)
-        TweenUtil.reparent_to_root(card)
-        card.clickable = true
-    cards = []
+func drop(animate: bool = true):
+    if not is_empty():
+        for card in cards:
+            TweenUtil.reparent_to_root(card)
+        (cards.front() as Card).part_of.cancel_move(animate)
+        cards = []
 
 
-func spread_cards(animate = true):
+func spread_cards(animate: bool = true):
     for i in cards.size():
         TweenUtil.card_tween_or_set(cards[i], offset * i, animate)

@@ -10,13 +10,14 @@ extends Node2D
 @onready var placement_spot: Sprite2D = $PlacementSpot
 
 var cards: Array[Card] = []
+var move_in_progress: Array[Card] = []
 
 
 func _ready():
      placement_spot.texture = initial_placement_spot_texture
 
 
-func add_cards(new_cards: Array[Card], animate = true):
+func add_cards(new_cards: Array[Card], animate: bool = true):
     for card in new_cards:
         card.reparent(placement_spot)
         card.part_of = self
@@ -24,12 +25,33 @@ func add_cards(new_cards: Array[Card], animate = true):
     spread_cards(animate)
 
 
-func begin_move(starting_from: Card, animate = true) -> Array[Card]:
-    var picked_up: Array[Card] = cards.slice(cards.find(starting_from))
-    return picked_up
+func begin_move(starting_from: Card) -> Array[Card]:
+    var i := cards.find(starting_from)
+    move_in_progress = cards.slice(i)
+    cards = cards.slice(0, i)
+    for card in move_in_progress:
+        TweenUtil.reparent_to_root(card)
+    return move_in_progress
 
 
-func spread_cards(animate = true):
+func cancel_move(animate: bool = true):
+    if not move_in_progress.is_empty():
+        for card in move_in_progress:
+            card.reparent(placement_spot)
+        cards.append_array(move_in_progress)
+        move_in_progress = []
+        spread_cards(animate)
+
+
+func finish_move(animate: bool = true):
+    if not move_in_progress.is_empty():
+        move_in_progress = []
+        if not cards.is_empty():
+            (cards.back() as Card).set_face_up(true, animate)
+            spread_cards(animate)
+
+
+func spread_cards(animate: bool = true):
     var thresh := clampi(cards.size() - spread, 0, cards.size() - 1)
     #print("thresh = ", thresh)
     for i in thresh:
