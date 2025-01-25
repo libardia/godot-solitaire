@@ -5,7 +5,7 @@ extends Node2D
 @export var initial_placement_spot_texture: Texture2D = preload("res://img/cards/placeAnything.png")
 @export var face_up_offset := Vector2.ZERO
 @export var face_down_offset := Vector2.ZERO
-@export_range(1, 100, 1, "or_greater") var spread := 1
+@export var spread := -1
 
 @onready var placement_spot: Sprite2D = $PlacementSpot
 
@@ -52,8 +52,11 @@ func finish_move(animate: bool = true):
 
 
 func spread_cards(animate: bool = true):
-    var thresh := clampi(cards.size() - spread, 0, cards.size() - 1)
-    #print("thresh = ", thresh)
+    var thresh := 0
+    if spread > 0:
+        # Only calculate a threshold if spread is 1 or more, otherwise leave
+        # threshold as 0 (meaning no limit on spread)
+        thresh = clampi(cards.size() - spread, 0, cards.size() - 1)
     for i in thresh:
         #print("set to zero: ", i)
         var card := cards[i]
@@ -63,6 +66,6 @@ func spread_cards(animate: bool = true):
     for i in range(thresh, cards.size()):
         #print("set with offset ", total_offset, ": ", i)
         var card := cards[i]
-        card.clickable = true
+        card.clickable = card.face_up
         TweenUtil.card_tween_or_set(card, total_offset, animate)
         total_offset += face_up_offset if card.face_up else face_down_offset

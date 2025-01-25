@@ -6,6 +6,7 @@ extends Node2D
 
 @onready var grab_point: Node2D = $GrabPoint
 
+var holding_source: Pile
 var cards: Array[Card] = []
 
 
@@ -18,18 +19,27 @@ func is_empty() -> bool:
 
 
 func pick_up(new_cards: Array[Card], animate: bool = true):
-    for card in new_cards:
-        card.reparent(grab_point)
-        card.clickable = false
-    cards = new_cards
-    spread_cards(animate)
+    if not new_cards.is_empty():
+        for card in new_cards:
+            card.reparent(grab_point)
+            card.clickable = false
+        cards = new_cards
+        holding_source = cards[0].part_of
+        spread_cards(animate)
+
+
+func put(new_pile: Pile, animate: bool = true):
+    holding_source.finish_move(animate)
+    new_pile.add_cards(cards, animate)
+    holding_source = null
+    cards = []
 
 
 func drop(animate: bool = true):
     if not is_empty():
         for card in cards:
             TweenUtil.reparent_to_root(card)
-        (cards.front() as Card).part_of.cancel_move(animate)
+        holding_source.cancel_move(animate)
         cards = []
 
 

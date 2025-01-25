@@ -22,8 +22,6 @@ spread = 3
 
 [node name="Pile" parent="." instance=ExtResource("3_du1b5")]
 position = Vector2(815, 264)
-face_up_offset = Vector2(0, 65)
-face_down_offset = Vector2(0, 20)
 
 [node name="Holding" type="Node2D" parent="."]
 script = ExtResource("4_b45r8")
