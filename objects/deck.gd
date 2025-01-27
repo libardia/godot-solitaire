@@ -4,6 +4,8 @@ extends Node2D
 
 signal deck_clicked(deck: Deck)
 
+@export var place_spot_opacity := 60.0
+
 @onready var placement_spot: Sprite2D = $PlacementSpot
 
 var card_scene: PackedScene = preload("res://objects/card.tscn")
@@ -21,6 +23,7 @@ func _ready():
         card.name = "Card_" + value
         cards.append(card)
         placement_spot.add_child(card)
+    placement_spot.self_modulate = Color(Color.WHITE, place_spot_opacity * 0.01)
     deck_clicked.connect(Controller.on_click_deck)
 
 

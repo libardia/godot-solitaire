@@ -66,7 +66,7 @@ func finish_deal():
 
 func on_click_card(c_card: Card):
     if accept_input:
-        print("clicked card: ", c_card)
+        #print("clicked card: ", c_card)
         if holding.is_empty():
             var picked_up: Array[Card] = c_card.part_of.begin_move(c_card)
             holding.pick_up(picked_up)
@@ -76,12 +76,13 @@ func on_click_card(c_card: Card):
 
 func on_rclick_card(c_card: Card):
     if accept_input:
-        print("right clicked card: ", c_card)
+        #print("right clicked card: ", c_card)
+        pass
 
 
 func on_click_deck(c_deck: Deck):
     if accept_input:
-        print("clicked deck: ", c_deck)
+        #print("clicked deck: ", c_deck)
         if holding.is_empty():
             if c_deck.is_empty() and not stock.is_empty():
                 var cards := stock.begin_move(stock.cards[0])
@@ -96,13 +97,13 @@ func on_click_deck(c_deck: Deck):
 
 func on_click_pile(c_pile: Pile):
     if accept_input:
-        print("clicked pile: ", c_pile)
+        #print("clicked pile: ", c_pile)
         if not holding.is_empty():
             holding.put(c_pile)
 
 
 func on_click_empty():
     if accept_input:
-        print("clicked empty")
+        #print("clicked empty")
         if not holding.is_empty():
             holding.drop()

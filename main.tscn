@@ -1,6 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://caj8gtnxxvqp2"]
+[gd_scene load_steps=11 format=3 uid="uid://caj8gtnxxvqp2"]
 
+[ext_resource type="Texture2D" uid="uid://bkluhwyrotmk" path="res://img/bg.png" id="1_0wwku"]
 [ext_resource type="Texture2D" uid="uid://bhiqa244bqcrd" path="res://img/cards/cardBack_blue1.png" id="1_eay5m"]
+[ext_resource type="Script" path="res://bg.gd" id="2_3r208"]
 [ext_resource type="PackedScene" uid="uid://shcwwt8xedeg" path="res://objects/deck.tscn" id="2_65c1w"]
 [ext_resource type="PackedScene" uid="uid://c6rlmltunmjk0" path="res://objects/pile.tscn" id="3_du1b5"]
 [ext_resource type="PackedScene" uid="uid://ctu1la7berwo6" path="res://objects/holding.tscn" id="4_xl1mi"]
@@ -10,6 +12,15 @@
 [ext_resource type="Texture2D" uid="uid://cprg63si5bwwp" path="res://img/cards/placeHeart.png" id="9_arm67"]
 
 [node name="Main" type="Node2D"]
+
+[node name="BG" type="Sprite2D" parent="."]
+modulate = Color(0.585062, 0.585062, 0.585062, 1)
+texture_repeat = 2
+texture = ExtResource("1_0wwku")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 250, 167)
+script = ExtResource("2_3r208")
 
 [node name="Ref" type="Sprite2D" parent="." groups=["reference_sprite"]]
 position = Vector2(-900, -376)

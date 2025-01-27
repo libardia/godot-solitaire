@@ -5,6 +5,7 @@ extends Node2D
 signal pile_clicked(pile: Pile)
 
 @export var initial_placement_spot_texture: Texture2D = preload("res://img/cards/placeAnything.png")
+@export var place_spot_opacity := 60.0
 @export var face_up_offset := Vector2.ZERO
 @export var face_down_offset := Vector2.ZERO
 @export var spread := -1
@@ -17,6 +18,7 @@ var move_in_progress: Array[Card] = []
 
 func _ready():
     placement_spot.texture = initial_placement_spot_texture
+    placement_spot.self_modulate = Color(Color.WHITE, place_spot_opacity * 0.01)
     pile_clicked.connect(Controller.on_click_pile)
 
 
