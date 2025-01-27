@@ -23,54 +23,58 @@ position = Vector2(330, 150)
 face_up_offset = Vector2(50, 0)
 spread = 3
 
-[node name="Pile1" parent="." groups=["pile"] instance=ExtResource("3_du1b5")]
+[node name="Piles" type="Node2D" parent="."]
+
+[node name="Pile1" parent="Piles" groups=["pile"] instance=ExtResource("3_du1b5")]
 position = Vector2(160, 370)
 face_up_offset = Vector2(0, 50)
 face_down_offset = Vector2(0, 20)
 
-[node name="Pile2" parent="." groups=["pile"] instance=ExtResource("3_du1b5")]
+[node name="Pile2" parent="Piles" groups=["pile"] instance=ExtResource("3_du1b5")]
 position = Vector2(330, 370)
 face_up_offset = Vector2(0, 50)
 face_down_offset = Vector2(0, 20)
 
-[node name="Pile3" parent="." groups=["pile"] instance=ExtResource("3_du1b5")]
+[node name="Pile3" parent="Piles" groups=["pile"] instance=ExtResource("3_du1b5")]
 position = Vector2(500, 370)
 face_up_offset = Vector2(0, 50)
 face_down_offset = Vector2(0, 20)
 
-[node name="Pile4" parent="." groups=["pile"] instance=ExtResource("3_du1b5")]
+[node name="Pile4" parent="Piles" groups=["pile"] instance=ExtResource("3_du1b5")]
 position = Vector2(670, 370)
 face_up_offset = Vector2(0, 50)
 face_down_offset = Vector2(0, 20)
 
-[node name="Pile5" parent="." groups=["pile"] instance=ExtResource("3_du1b5")]
+[node name="Pile5" parent="Piles" groups=["pile"] instance=ExtResource("3_du1b5")]
 position = Vector2(840, 370)
 face_up_offset = Vector2(0, 50)
 face_down_offset = Vector2(0, 20)
 
-[node name="Pile6" parent="." groups=["pile"] instance=ExtResource("3_du1b5")]
+[node name="Pile6" parent="Piles" groups=["pile"] instance=ExtResource("3_du1b5")]
 position = Vector2(1010, 370)
 face_up_offset = Vector2(0, 50)
 face_down_offset = Vector2(0, 20)
 
-[node name="Pile7" parent="." groups=["pile"] instance=ExtResource("3_du1b5")]
+[node name="Pile7" parent="Piles" groups=["pile"] instance=ExtResource("3_du1b5")]
 position = Vector2(1180, 370)
 face_up_offset = Vector2(0, 50)
 face_down_offset = Vector2(0, 20)
 
-[node name="HomeSpade" parent="." groups=["home"] instance=ExtResource("3_du1b5")]
+[node name="Homes" type="Node2D" parent="."]
+
+[node name="HomeSpade" parent="Homes" groups=["home"] instance=ExtResource("3_du1b5")]
 position = Vector2(670, 150)
 initial_placement_spot_texture = ExtResource("6_iu04x")
 
-[node name="HomeClub" parent="." groups=["home"] instance=ExtResource("3_du1b5")]
+[node name="HomeClub" parent="Homes" groups=["home"] instance=ExtResource("3_du1b5")]
 position = Vector2(840, 150)
 initial_placement_spot_texture = ExtResource("7_a7guu")
 
-[node name="HomeDiamond" parent="." groups=["home"] instance=ExtResource("3_du1b5")]
+[node name="HomeDiamond" parent="Homes" groups=["home"] instance=ExtResource("3_du1b5")]
 position = Vector2(1010, 150)
 initial_placement_spot_texture = ExtResource("8_pam1p")
 
-[node name="HomeHeart" parent="." groups=["home"] instance=ExtResource("3_du1b5")]
+[node name="HomeHeart" parent="Homes" groups=["home"] instance=ExtResource("3_du1b5")]
 position = Vector2(1180, 150)
 initial_placement_spot_texture = ExtResource("9_arm67")
 

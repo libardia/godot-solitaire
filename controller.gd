@@ -1,8 +1,6 @@
 extends Node
 
 
-@export var row_spacing := 0.0
-
 @onready var deck: Deck = Groups.get_deck()
 @onready var holding: Holding = Groups.get_holding()
 @onready var stock: Pile = Groups.get_stock()
@@ -15,13 +13,17 @@ extends Node
     homes[0], homes[1], homes[2], homes[3]
 ]
 
+const ROW_SPACING := 50
+const DEAL_DELAY_SEC := 0.1
 const N_PILES := 7
+var setup_thread := Thread.new()
+var accept_input := false
 
 
 func _ready():
     get_viewport().size_changed.connect(place_piles)
     place_piles()
-    deal()
+    setup_thread.start(deal)
 
 
 func _unhandled_input(event: InputEvent):
@@ -33,8 +35,8 @@ func _unhandled_input(event: InputEvent):
 
 func place_piles():
     var sep := (Screen.width() - N_PILES * ref_size.x) / (N_PILES + 1)
-    var start := Vector2(sep + h_ref_size.x, row_spacing + h_ref_size.y)
-    var row_offset := Vector2.DOWN * (row_spacing + ref_size.y)
+    var start := Vector2(sep + h_ref_size.x, ROW_SPACING + h_ref_size.y)
+    var row_offset := Vector2.DOWN * (ROW_SPACING + ref_size.y)
     var col_offset := Vector2.RIGHT * (sep + ref_size.x)
     for i in N_PILES:
         var top := top_row[i]
@@ -44,37 +46,57 @@ func place_piles():
 
 
 func deal():
-    pass
+    for i in N_PILES:
+        for j in range(i, N_PILES):
+            call_deferred(&"deal_to_pile", piles[j], j == i)
+            OS.delay_msec(floori(DEAL_DELAY_SEC * 1000))
+    call_deferred(&"finish_deal")
 
 
-func on_click_empty():
-    print("clicked empty")
-    if not holding.is_empty():
-        holding.drop()
+func deal_to_pile(pile: Pile, face_up: bool):
+    var card: Card = deck.draw_cards(1)[0]
+    card.set_face_up(face_up)
+    pile.add_cards([card])
+
+
+func finish_deal():
+    setup_thread.wait_to_finish()
+    accept_input = true
 
 
 func on_click_card(c_card: Card):
-    print("clicked card: ", c_card)
-    if holding.is_empty():
-        var picked_up: Array[Card] = c_card.part_of.begin_move(c_card)
-        holding.pick_up(picked_up)
-    else:
-        holding.put(c_card.part_of)
+    if accept_input:
+        print("clicked card: ", c_card)
+        if holding.is_empty():
+            var picked_up: Array[Card] = c_card.part_of.begin_move(c_card)
+            holding.pick_up(picked_up)
+        else:
+            holding.put(c_card.part_of)
 
 
 func on_rclick_card(c_card: Card):
-    print("right clicked card: ", c_card)
+    if accept_input:
+        print("right clicked card: ", c_card)
 
 
 func on_click_deck(c_deck: Deck):
-    print("clicked deck: ", c_deck)
-    if holding.is_empty():
-        var drawn: Array[Card] = c_deck.draw_cards(3)
-        for c in drawn:
-            c.set_face_up(true)
-        stock.add_cards(drawn)
+    if accept_input:
+        print("clicked deck: ", c_deck)
+        if holding.is_empty():
+            var drawn: Array[Card] = c_deck.draw_cards(3)
+            for c in drawn:
+                c.set_face_up(true)
+            stock.add_cards(drawn)
 
 
 func on_click_pile(c_pile: Pile):
-    print("clicked pile: ", c_pile)
-    holding.put(c_pile)
+    if accept_input:
+        print("clicked pile: ", c_pile)
+        holding.put(c_pile)
+
+
+func on_click_empty():
+    if accept_input:
+        print("clicked empty")
+        if not holding.is_empty():
+            holding.drop()
