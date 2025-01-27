@@ -1,37 +1,81 @@
-[gd_scene load_steps=7 format=3 uid="uid://caj8gtnxxvqp2"]
+[gd_scene load_steps=10 format=3 uid="uid://caj8gtnxxvqp2"]
 
-[ext_resource type="PackedScene" uid="uid://cfc4qqmu1h11e" path="res://controller.tscn" id="1_bl1fi"]
+[ext_resource type="PackedScene" path="res://controller.tscn" id="1_3inu1"]
+[ext_resource type="Texture2D" uid="uid://bhiqa244bqcrd" path="res://img/cards/cardBack_blue1.png" id="1_eay5m"]
 [ext_resource type="PackedScene" uid="uid://shcwwt8xedeg" path="res://objects/deck.tscn" id="2_65c1w"]
 [ext_resource type="PackedScene" uid="uid://c6rlmltunmjk0" path="res://objects/pile.tscn" id="3_du1b5"]
-[ext_resource type="Script" path="res://holding.gd" id="4_b45r8"]
-[ext_resource type="Texture2D" uid="uid://y67xi5shyp6v" path="res://img/cards/cardSpadesA.png" id="5_k0b01"]
-[ext_resource type="Script" path="res://delete_self.gd" id="5_qiol0"]
+[ext_resource type="PackedScene" uid="uid://ctu1la7berwo6" path="res://objects/holding.tscn" id="4_xl1mi"]
+[ext_resource type="Texture2D" uid="uid://dcmvwhylgfgmc" path="res://img/cards/placeSpade.png" id="6_iu04x"]
+[ext_resource type="Texture2D" uid="uid://bpd4uv0s8vape" path="res://img/cards/placeClub.png" id="7_a7guu"]
+[ext_resource type="Texture2D" uid="uid://8dpafqf14bwy" path="res://img/cards/placeDiamond.png" id="8_pam1p"]
+[ext_resource type="Texture2D" uid="uid://cprg63si5bwwp" path="res://img/cards/placeHeart.png" id="9_arm67"]
 
 [node name="Main" type="Node2D"]
 
-[node name="Controller" parent="." instance=ExtResource("1_bl1fi")]
+[node name="Controller" parent="." instance=ExtResource("1_3inu1")]
+row_spacing = 20.0
 
-[node name="Deck" parent="." instance=ExtResource("2_65c1w")]
-position = Vector2(160, 249)
+[node name="Ref" type="Sprite2D" parent="." groups=["reference_sprite"]]
+position = Vector2(-900, -376)
+texture = ExtResource("1_eay5m")
 
-[node name="Stock" parent="." instance=ExtResource("3_du1b5")]
-position = Vector2(431, 231)
+[node name="Deck" parent="." groups=["deck"] instance=ExtResource("2_65c1w")]
+position = Vector2(160, 150)
+
+[node name="Stock" parent="." groups=["stock"] instance=ExtResource("3_du1b5")]
+position = Vector2(330, 150)
 face_up_offset = Vector2(50, 0)
-face_down_offset = Vector2(50, 0)
 spread = 3
 
-[node name="Pile" parent="." instance=ExtResource("3_du1b5")]
-position = Vector2(815, 264)
-face_up_offset = Vector2(0, 65)
+[node name="Pile1" parent="." groups=["pile"] instance=ExtResource("3_du1b5")]
+position = Vector2(160, 370)
+face_up_offset = Vector2(0, 50)
 face_down_offset = Vector2(0, 20)
 
-[node name="Holding" type="Node2D" parent="."]
-script = ExtResource("4_b45r8")
-offset = Vector2(0, 65)
+[node name="Pile2" parent="." groups=["pile"] instance=ExtResource("3_du1b5")]
+position = Vector2(330, 370)
+face_up_offset = Vector2(0, 50)
+face_down_offset = Vector2(0, 20)
 
-[node name="GrabPoint" type="Node2D" parent="Holding"]
-position = Vector2(0, 65)
+[node name="Pile3" parent="." groups=["pile"] instance=ExtResource("3_du1b5")]
+position = Vector2(500, 370)
+face_up_offset = Vector2(0, 50)
+face_down_offset = Vector2(0, 20)
 
-[node name="HoldPreview" type="Sprite2D" parent="Holding/GrabPoint"]
-texture = ExtResource("5_k0b01")
-script = ExtResource("5_qiol0")
+[node name="Pile4" parent="." groups=["pile"] instance=ExtResource("3_du1b5")]
+position = Vector2(670, 370)
+face_up_offset = Vector2(0, 50)
+face_down_offset = Vector2(0, 20)
+
+[node name="Pile5" parent="." groups=["pile"] instance=ExtResource("3_du1b5")]
+position = Vector2(840, 370)
+face_up_offset = Vector2(0, 50)
+face_down_offset = Vector2(0, 20)
+
+[node name="Pile6" parent="." groups=["pile"] instance=ExtResource("3_du1b5")]
+position = Vector2(1010, 370)
+face_up_offset = Vector2(0, 50)
+face_down_offset = Vector2(0, 20)
+
+[node name="Pile7" parent="." groups=["pile"] instance=ExtResource("3_du1b5")]
+position = Vector2(1180, 370)
+face_up_offset = Vector2(0, 50)
+face_down_offset = Vector2(0, 20)
+
+[node name="HomeSpade" parent="." groups=["home"] instance=ExtResource("3_du1b5")]
+position = Vector2(670, 150)
+initial_placement_spot_texture = ExtResource("6_iu04x")
+
+[node name="HomeClub" parent="." groups=["home"] instance=ExtResource("3_du1b5")]
+position = Vector2(840, 150)
+initial_placement_spot_texture = ExtResource("7_a7guu")
+
+[node name="HomeDiamond" parent="." groups=["home"] instance=ExtResource("3_du1b5")]
+position = Vector2(1010, 150)
+initial_placement_spot_texture = ExtResource("8_pam1p")
+
+[node name="HomeHeart" parent="." groups=["home"] instance=ExtResource("3_du1b5")]
+position = Vector2(1180, 150)
+initial_placement_spot_texture = ExtResource("9_arm67")
+
+[node name="Holding" parent="." groups=["holding"] instance=ExtResource("4_xl1mi")]

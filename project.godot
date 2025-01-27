@@ -22,6 +22,9 @@ Suits="*res://globals/suits.gd"
 CardValues="*res://globals/card_values.gd"
 CardGraphics="*res://globals/card_graphics.gd"
 TweenUtil="*res://globals/tween_util.gd"
+Screen="*res://globals/screen.gd"
+Groups="*res://globals/groups.gd"
+GroupUtil="*res://globals/group_util.gd"
 
 [display]
 
@@ -31,6 +34,15 @@ window/size/viewport_height=900
 [dotnet]
 
 project/assembly_name="solitaire"
+
+[global_group]
+
+pile=""
+home=""
+holding=""
+stock=""
+deck=""
+reference_sprite=""
 
 [input]
 
