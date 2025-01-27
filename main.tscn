@@ -62,19 +62,19 @@ face_down_offset = Vector2(0, 20)
 
 [node name="Homes" type="Node2D" parent="."]
 
-[node name="HomeSpade" parent="Homes" groups=["home"] instance=ExtResource("3_du1b5")]
+[node name="HomeSpade" parent="Homes" groups=["home", "home_spade"] instance=ExtResource("3_du1b5")]
 position = Vector2(670, 150)
 initial_placement_spot_texture = ExtResource("6_iu04x")
 
-[node name="HomeClub" parent="Homes" groups=["home"] instance=ExtResource("3_du1b5")]
+[node name="HomeClub" parent="Homes" groups=["home", "home_club"] instance=ExtResource("3_du1b5")]
 position = Vector2(840, 150)
 initial_placement_spot_texture = ExtResource("7_a7guu")
 
-[node name="HomeDiamond" parent="Homes" groups=["home"] instance=ExtResource("3_du1b5")]
+[node name="HomeDiamond" parent="Homes" groups=["home", "home_diamond"] instance=ExtResource("3_du1b5")]
 position = Vector2(1010, 150)
 initial_placement_spot_texture = ExtResource("8_pam1p")
 
-[node name="HomeHeart" parent="Homes" groups=["home"] instance=ExtResource("3_du1b5")]
+[node name="HomeHeart" parent="Homes" groups=["home", "home_heart"] instance=ExtResource("3_du1b5")]
 position = Vector2(1180, 150)
 initial_placement_spot_texture = ExtResource("9_arm67")
 

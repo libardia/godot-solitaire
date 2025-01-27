@@ -31,6 +31,10 @@ func _unhandled_input(event: InputEvent):
             deck_clicked.emit(self)
 
 
+func is_empty() -> bool:
+    return cards.is_empty()
+
+
 func draw_cards(n: int = 1) -> Array[Card]:
     var drawn: Array[Card] = []
     for i in clampi(n, 0, cards.size()):
@@ -39,3 +43,13 @@ func draw_cards(n: int = 1) -> Array[Card]:
         TweenUtil.reparent_to_root(card)
         drawn.append(card)
     return drawn
+
+
+func add_cards(new_cards: Array[Card], animate: bool = true):
+    for card in new_cards:
+        card.set_face_up(false, animate)
+        card.clickable = false
+        card.part_of = null
+        card.reparent(placement_spot)
+        TweenUtil.card_tween_or_set(card, Vector2.ZERO, animate)
+    cards.append_array(new_cards)

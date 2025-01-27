@@ -45,6 +45,10 @@ holding=""
 stock=""
 deck=""
 reference_sprite=""
+home_spade=""
+home_club=""
+home_diamond=""
+home_heart=""
 
 [input]
 

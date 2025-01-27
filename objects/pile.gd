@@ -27,6 +27,10 @@ func _unhandled_input(event: InputEvent):
             pile_clicked.emit(self)
 
 
+func is_empty() -> bool:
+    return cards.is_empty()
+
+
 func add_cards(new_cards: Array[Card], animate: bool = true):
     for card in new_cards:
         card.reparent(placement_spot)

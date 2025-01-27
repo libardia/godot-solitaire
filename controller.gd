@@ -83,16 +83,22 @@ func on_click_deck(c_deck: Deck):
     if accept_input:
         print("clicked deck: ", c_deck)
         if holding.is_empty():
-            var drawn: Array[Card] = c_deck.draw_cards(3)
-            for c in drawn:
-                c.set_face_up(true)
-            stock.add_cards(drawn)
+            if c_deck.is_empty() and not stock.is_empty():
+                var cards := stock.begin_move(stock.cards[0])
+                stock.finish_move()
+                deck.add_cards(cards)
+            else:
+                var drawn: Array[Card] = c_deck.draw_cards(3)
+                for c in drawn:
+                    c.set_face_up(true)
+                stock.add_cards(drawn)
 
 
 func on_click_pile(c_pile: Pile):
     if accept_input:
         print("clicked pile: ", c_pile)
-        holding.put(c_pile)
+        if not holding.is_empty():
+            holding.put(c_pile)
 
 
 func on_click_empty():

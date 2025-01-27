@@ -7,6 +7,10 @@ const STOCK := &"stock"
 const HOLDING := &"holding"
 const PILE := &"pile"
 const HOME := &"home"
+const HOME_SPADE := &"home_spade"
+const HOME_CLUB := &"home_club"
+const HOME_DIAMOND := &"home_diamond"
+const HOME_HEART := &"home_heart"
 
 
 func get_reference_sprite() -> Sprite2D:
