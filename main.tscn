@@ -1,6 +1,5 @@
-[gd_scene load_steps=10 format=3 uid="uid://caj8gtnxxvqp2"]
+[gd_scene load_steps=9 format=3 uid="uid://caj8gtnxxvqp2"]
 
-[ext_resource type="PackedScene" path="res://controller.tscn" id="1_3inu1"]
 [ext_resource type="Texture2D" uid="uid://bhiqa244bqcrd" path="res://img/cards/cardBack_blue1.png" id="1_eay5m"]
 [ext_resource type="PackedScene" uid="uid://shcwwt8xedeg" path="res://objects/deck.tscn" id="2_65c1w"]
 [ext_resource type="PackedScene" uid="uid://c6rlmltunmjk0" path="res://objects/pile.tscn" id="3_du1b5"]
@@ -11,9 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://cprg63si5bwwp" path="res://img/cards/placeHeart.png" id="9_arm67"]
 
 [node name="Main" type="Node2D"]
-
-[node name="Controller" parent="." instance=ExtResource("1_3inu1")]
-row_spacing = 20.0
 
 [node name="Ref" type="Sprite2D" parent="." groups=["reference_sprite"]]
 position = Vector2(-900, -376)

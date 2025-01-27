@@ -1,11 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://bddrhp5bufq6m"]
+[gd_scene load_steps=8 format=3 uid="uid://bddrhp5bufq6m"]
 
 [ext_resource type="Script" path="res://objects/card.gd" id="1_6f1ng"]
 [ext_resource type="Texture2D" uid="uid://y67xi5shyp6v" path="res://img/cards/cardSpadesA.png" id="2_r6v08"]
 [ext_resource type="Texture2D" uid="uid://bdip780mlrtp3" path="res://img/cards/cardBack_blue2.png" id="2_w2n7n"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ti7tg"]
-size = Vector2(140, 190)
 
 [sub_resource type="Animation" id="Animation_2wluj"]
 length = 0.001
@@ -144,12 +141,6 @@ texture = ExtResource("2_w2n7n")
 
 [node name="CardFace" type="Sprite2D" parent="."]
 texture = ExtResource("2_r6v08")
-
-[node name="ClickArea" type="Area2D" parent="."]
-monitoring = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea"]
-shape = SubResource("RectangleShape2D_ti7tg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

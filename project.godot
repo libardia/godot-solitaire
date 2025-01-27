@@ -25,6 +25,8 @@ TweenUtil="*res://globals/tween_util.gd"
 Screen="*res://globals/screen.gd"
 Groups="*res://globals/groups.gd"
 GroupUtil="*res://globals/group_util.gd"
+Controller="*res://controller.gd"
+Inputs="*res://globals/inputs.gd"
 
 [display]
 
@@ -46,12 +48,12 @@ reference_sprite=""
 
 [input]
 
-card-interact={
+interact={
 "deadzone": 0.5,
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(70, 13),"global_position":Vector2(79, 59),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
-card-auto={
+auto-move={
 "deadzone": 0.5,
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":2,"position":Vector2(110, 13),"global_position":Vector2(119, 59),"factor":1.0,"button_index":2,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]

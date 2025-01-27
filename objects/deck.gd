@@ -2,6 +2,8 @@ class_name Deck
 extends Node2D
 
 
+signal deck_clicked(deck: Deck)
+
 @onready var placement_spot: Sprite2D = $PlacementSpot
 
 var card_scene: PackedScene = preload("res://objects/card.tscn")
@@ -19,6 +21,14 @@ func _ready():
         card.name = "Card_" + value
         cards.append(card)
         placement_spot.add_child(card)
+    deck_clicked.connect(Controller.on_click_deck)
+
+
+func _unhandled_input(event: InputEvent):
+    if event.is_action_pressed(Inputs.INTERACT):
+        if placement_spot.get_rect().has_point(to_local(event.position)):
+            get_viewport().set_input_as_handled()
+            deck_clicked.emit(self)
 
 
 func draw_cards(n: int = 1) -> Array[Card]:

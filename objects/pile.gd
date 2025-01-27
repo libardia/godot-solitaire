@@ -2,6 +2,8 @@ class_name Pile
 extends Node2D
 
 
+signal pile_clicked(pile: Pile)
+
 @export var initial_placement_spot_texture: Texture2D = preload("res://img/cards/placeAnything.png")
 @export var face_up_offset := Vector2.ZERO
 @export var face_down_offset := Vector2.ZERO
@@ -14,7 +16,15 @@ var move_in_progress: Array[Card] = []
 
 
 func _ready():
-     placement_spot.texture = initial_placement_spot_texture
+    placement_spot.texture = initial_placement_spot_texture
+    pile_clicked.connect(Controller.on_click_pile)
+
+
+func _unhandled_input(event: InputEvent):
+    if event.is_action_pressed(Inputs.INTERACT):
+        if placement_spot.get_rect().has_point(to_local(event.position)):
+            get_viewport().set_input_as_handled()
+            pile_clicked.emit(self)
 
 
 func add_cards(new_cards: Array[Card], animate: bool = true):

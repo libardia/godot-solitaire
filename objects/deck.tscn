@@ -1,19 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://shcwwt8xedeg"]
+[gd_scene load_steps=3 format=3 uid="uid://shcwwt8xedeg"]
 
 [ext_resource type="Script" path="res://objects/deck.gd" id="1_aqomd"]
 [ext_resource type="Texture2D" uid="uid://b8evsy4jm3hkh" path="res://img/cards/placeAnything.png" id="2_gaqe5"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3r8he"]
-size = Vector2(140, 190)
 
 [node name="Deck" type="Node2D"]
 script = ExtResource("1_aqomd")
 
 [node name="PlacementSpot" type="Sprite2D" parent="."]
 texture = ExtResource("2_gaqe5")
-
-[node name="ClickArea" type="Area2D" parent="."]
-monitoring = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea"]
-shape = SubResource("RectangleShape2D_3r8he")
