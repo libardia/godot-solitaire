@@ -33,6 +33,10 @@ func is_empty() -> bool:
     return cards.is_empty()
 
 
+func top_card() -> Card:
+    return null if is_empty() else cards[-1]
+
+
 func add_cards(new_cards: Array[Card], animate: bool = true):
     for card in new_cards:
         card.reparent(placement_spot)
